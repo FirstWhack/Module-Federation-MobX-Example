@@ -15,6 +15,7 @@ const Numbers = observer(() => {
       <div className='mfe-container'>
         <div className='users__container'>
           <h1>Users App 1 (simple lazy fetch): </h1>
+          <pre>This component is rendered in the main application</pre>
           <table>
             {users.map(({ name, id, username }) => {
               return (

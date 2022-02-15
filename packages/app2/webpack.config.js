@@ -46,8 +46,8 @@ module.exports = {
         {
           react: { singleton: true, eager: true },
           "react-dom": { singleton: true, eager: true },
-          mobx: { singleton: true, eager: true },
-          "mobx-react": { singleton: true, eager: true },
+          mobx: { eager: true },
+          "mobx-react": { eager: true },
           "@mfexample/store": { singleton: true, eager: true },
         },
       ],
