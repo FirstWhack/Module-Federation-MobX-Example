@@ -44,6 +44,7 @@ module.exports = {
       filename: "remoteEntry.js",
       remotes: {
         app2: `app2@${getRemoteEntryUrl(1338)}`,
+        store: `store@${getRemoteEntryUrl(1339)}`,
       },
       shared: [
         {
@@ -51,7 +52,6 @@ module.exports = {
           "react-dom": { singleton: true, eager: true },
           mobx: { eager: true },
           "mobx-react": { eager: true },
-          "@mfexample/store": { singleton: true, eager: true },
         },
       ],
     }),

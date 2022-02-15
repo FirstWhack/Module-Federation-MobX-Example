@@ -13,7 +13,16 @@
     "html-webpack-plugin": "5.3.1",
     "serve": "11.3.2",
     "ts-loader": "^9.2.6",
-    "typescript": "^4.5.5"
+    "typescript": "^4.5.5",
+    "webpack": "5.37.1",
+    "webpack-cli": "4.9.0",
+    "webpack-dev-server": "3.11.2"
+  },
+  "scripts": {
+    "start": "webpack-cli serve",
+    "build": "webpack --mode production",
+    "serve": "serve dist -p 1339",
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "react": "^17.0.2",

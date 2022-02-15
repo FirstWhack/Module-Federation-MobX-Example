@@ -5,14 +5,16 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = webpack.container;
 
 module.exports = {
-  entry: "./index.js",
+  // no entry
+  entry: {},
   mode: "development",
-  devtool: "source-map",
+  devtool: 'source-map',
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-    port: 1338,
+    port: 1339,
   },
   output: {
+	  
     publicPath: "auto",
   },
   module: {
@@ -20,7 +22,7 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: "ts-loader",
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.jsx?$/,
@@ -33,17 +35,14 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js", ".jsx"],
+    extensions: ['.ts', '.js'],
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "app2",
+      name: "store",
       filename: "remoteEntry.js",
       exposes: {
-        "./Users": "./app",
-      },
-      remotes: {
-        store: `store@${getRemoteEntryUrl(1339)}`,
+        "./Store": "./app",
       },
       shared: [
         {
@@ -53,24 +52,6 @@ module.exports = {
           "mobx-react": { eager: true },
         },
       ],
-    }),
-    new HtmlWebpackPlugin({
-      template: "./index.html",
-    }),
+    })
   ],
 };
-
-function getRemoteEntryUrl(port) {
-  const { CODESANDBOX_SSE, HOSTNAME = "" } = process.env;
-
-  // Check if the example is running on codesandbox
-  // https://codesandbox.io/docs/environment
-  if (!CODESANDBOX_SSE) {
-    return `//localhost:${port}/remoteEntry.js`;
-  }
-
-  const parts = HOSTNAME.split("-");
-  const codesandboxId = parts[parts.length - 1];
-
-  return `//${codesandboxId}-${port}.sse.codesandbox.io/remoteEntry.js`;
-}
