@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
 import APIStoreContext from "@mfexample/store";
 import { observer } from "mobx-react";
+import React from "react";
 
 export default observer(function App() {
   const APIStore = React.useContext(APIStoreContext);
@@ -8,7 +8,7 @@ export default observer(function App() {
   const { users, deleteLastUser } = APIStore;
 
   return (
-    <div className='users__container'>
+    <div className="users__container">
       <h1>Users App 2 (simple lazy fetch): </h1>
       <table>
         {users.map(({ name, id, username }) => {
@@ -21,7 +21,9 @@ export default observer(function App() {
           );
         })}
       </table>
-      <button className='users__delete' onClick={deleteLastUser}>Delete Last User from App 2</button>
+      <button className="users__delete" onClick={deleteLastUser}>
+        Delete Last User from App 2
+      </button>
     </div>
   );
 });

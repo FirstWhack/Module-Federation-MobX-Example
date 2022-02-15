@@ -32,7 +32,7 @@ export class APIStore {
     // return data;
   });
   deleteLastUser = action(() => {
-      this.users.pop()
+    this.users.pop();
   });
 
   // not using async/await is a little weirder

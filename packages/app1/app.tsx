@@ -1,12 +1,11 @@
-import React, { useState, lazy, Suspense } from "react";
 import APIStoreContext from "@mfexample/store";
 import { observer } from "mobx-react";
+import React, { lazy, Suspense } from "react";
 import './styles.less';
 
 const App2Users = lazy(() => import("app2/Users"));
 
 const Numbers = observer(() => {
-  const [number, setNumber] = useState(0);
   const APIStore = React.useContext(APIStoreContext);
 
   const { users, deleteLastUser } = APIStore;
