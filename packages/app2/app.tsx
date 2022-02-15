@@ -16,7 +16,7 @@ export default observer(function App() {
     <>
       <div className="users__container">
         <h1>Users App 2 (simple lazy fetch): </h1>
-        <pre>This component is rendered in the main application</pre>
+        <pre>This component is a Federated Module</pre>
         <table>
           {APIStore.users.map(({ name, id, username }) => {
             return (
