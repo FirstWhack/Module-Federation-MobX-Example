@@ -1,6 +1,5 @@
 declare module 'store/Store' {
-    const APIStoreContext: typeof import("@mfexample/store").default;
-    export const APIStore: typeof import("@mfexample/store").APIStore;
+    const APIStoreContext: typeof import("@mfexample/store");
   
     export default APIStoreContext;
   }
