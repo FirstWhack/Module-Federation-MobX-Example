@@ -1,5 +1,6 @@
 {
   "name": "@mfexample/store",
+  "description": "This module is expected to be published on it's own. It could also be federated depending on it's nature ",
   "version": "0.1.0",
   "private": true,
   "main": "app.ts",
@@ -12,16 +13,7 @@
     "html-webpack-plugin": "5.3.1",
     "serve": "11.3.2",
     "ts-loader": "^9.2.6",
-    "typescript": "^4.5.5",
-    "webpack": "5.37.1",
-    "webpack-cli": "4.9.0",
-    "webpack-dev-server": "3.11.2"
-  },
-  "scripts": {
-    "start": "webpack-cli serve",
-    "build": "webpack --mode production",
-    "serve": "serve dist -p 1338",
-    "clean": "rm -rf dist"
+    "typescript": "^4.5.5"
   },
   "dependencies": {
     "react": "^17.0.2",
