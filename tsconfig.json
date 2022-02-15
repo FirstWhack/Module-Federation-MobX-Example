@@ -1,0 +1,21 @@
+{
+    "include": [
+        "./packages/**/*",
+    ],
+    "compilerOptions": {
+        "strict": true,
+        "esModuleInterop": true,
+        "lib": [
+            "dom",
+            "es2015"
+        ],
+        "target": "es5",
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "moduleResolution": "node",
+        "declaration": true,
+        "declarationDir": "./types"
+    },
+    "sourceMap": true,
+    "experimentalDecorators": true
+}
