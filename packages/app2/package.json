@@ -23,10 +23,10 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "@mfexample/store": "^0.1.0",
     "mobx": "^6.3.13",
     "mobx-react": "^7.2.1",
-    "@mfexample/store": "^0.1.0"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   }
 }

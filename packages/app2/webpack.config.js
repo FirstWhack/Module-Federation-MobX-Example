@@ -10,54 +10,54 @@ module.exports = {
   devtool: "source-map",
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-    port: 1338,
+    port: 1338
   },
   output: {
-    publicPath: "auto",
+    publicPath: "auto"
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
         use: "ts-loader",
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.jsx?$/,
         loader: "babel-loader",
         exclude: /node_modules/,
         options: {
-          presets: ["@babel/preset-react"],
-        },
-      },
-    ],
+          presets: ["@babel/preset-react"]
+        }
+      }
+    ]
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js", ".jsx"],
+    extensions: [".tsx", ".ts", ".js", ".jsx"]
   },
   plugins: [
     new ModuleFederationPlugin({
       name: "app2",
       filename: "remoteEntry.js",
       exposes: {
-        "./Users": "./app",
+        "./Users": "./app"
       },
       remotes: {
-        store: `store@${getRemoteEntryUrl(1339)}`,
+        store: `store@${getRemoteEntryUrl(1339)}`
       },
       shared: [
         {
           react: { singleton: true, eager: true },
           "react-dom": { singleton: true, eager: true },
           mobx: { eager: true },
-          "mobx-react": { eager: true },
-        },
-      ],
+          "mobx-react": { eager: true }
+        }
+      ]
     }),
     new HtmlWebpackPlugin({
-      template: "./index.html",
-    }),
-  ],
+      template: "./index.html"
+    })
+  ]
 };
 
 function getRemoteEntryUrl(port) {

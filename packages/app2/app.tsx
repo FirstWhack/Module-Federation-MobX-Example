@@ -2,21 +2,19 @@ import { APIStore } from "@mfexample/store";
 import { observer } from "mobx-react";
 import React from "react";
 
-
 const APIStoreContext = import("store/Store");
 
 export default observer(function App() {
   const [APIStore, setAPIStore] = React.useState<APIStore | null>(null);
   React.useEffect(() => {
-    APIStoreContext.then((context) => setAPIStore(context.APIStoreInstance)),
-      [];
+    APIStoreContext.then(context => setAPIStore(context.APIStoreInstance)), [];
   });
 
   return APIStore ? (
     <>
       <div className="users__container">
         <h1>Users App 2 (simple lazy fetch): </h1>
-        <pre>This component is rendered in the main application</pre>
+        <pre>This component is a Federated Module</pre>
         <table>
           {APIStore.users.map(({ name, id, username }) => {
             return (

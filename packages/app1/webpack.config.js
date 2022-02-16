@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ModuleFederationPlugin =
-  require("webpack").container.ModuleFederationPlugin;
+const ModuleFederationPlugin = require("webpack").container
+  .ModuleFederationPlugin;
 const path = require("path");
 
 module.exports = {
@@ -9,34 +9,34 @@ module.exports = {
   devtool: "source-map",
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-    port: 1337,
+    port: 1337
   },
   output: {
-    publicPath: "auto",
+    publicPath: "auto"
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
         use: "ts-loader",
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.jsx?$/,
         loader: "babel-loader",
         exclude: /node_modules/,
         options: {
-          presets: ["@babel/preset-react"],
-        },
+          presets: ["@babel/preset-react"]
+        }
       },
       {
         test: /\.less$/i,
-        use: ["style-loader", "css-loader", "less-loader"],
-      },
-    ],
+        use: ["style-loader", "css-loader", "less-loader"]
+      }
+    ]
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js", ".jsx"],
+    extensions: [".tsx", ".ts", ".js", ".jsx"]
   },
   plugins: [
     new ModuleFederationPlugin({
@@ -44,29 +44,29 @@ module.exports = {
       filename: "remoteEntry.js",
       remotes: {
         app2: `app2@${getRemoteEntryUrl(1338)}`,
-        store: `store@${getRemoteEntryUrl(1339)}`,
+        store: `store@${getRemoteEntryUrl(1339)}`
       },
       shared: [
         {
           react: { singleton: true, eager: true },
           "react-dom": { singleton: true, eager: true },
           mobx: { eager: true },
-          "mobx-react": { eager: true },
-        },
-      ],
+          "mobx-react": { eager: true }
+        }
+      ]
     }),
     new HtmlWebpackPlugin({
-      template: "./index.html",
-    }),
-  ],
+      template: "./index.html"
+    })
+  ]
 };
 
 function getRemoteEntryUrl(port) {
-  const { CODESANDBOX_SSE, HOSTNAME = "" } = process.env;
+  const { HOSTNAME = "" } = process.env;
 
   // Check if the example is running on codesandbox
   // https://codesandbox.io/docs/environment
-  if (!CODESANDBOX_SSE) {
+  if (!HOSTNAME.includes("sandbox")) {
     return `//localhost:${port}/remoteEntry.js`;
   }
 
