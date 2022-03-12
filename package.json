@@ -6,7 +6,8 @@
     ]
   },
   "scripts": {
-    "start": "yarn workspaces foreach -piv run start"
+    "start": "yarn workspaces foreach -piv run start",
+    "build": "yarn workspaces foreach -piv run build"
   },
   "keywords": [],
   "name": "react-sharedmobx-mfe-example",

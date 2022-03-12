@@ -1,4 +1,5 @@
 node_modules
 .vscode
 packages/**/dist
-.yarn
+.yarn/cache
+.yarn/install-state.gz
