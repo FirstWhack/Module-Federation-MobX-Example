@@ -11,11 +11,11 @@ export class APIStore {
   constructor(
     axiosConf: AxiosRequestConfig = {
       baseURL: "https://jsonplaceholder.typicode.com",
-      auth: undefined,
+      auth: undefined
     }
   ) {
     makeObservable(this, {
-      users: true,
+      users: true
     });
     // setup api that should be in it's own class
     this.api = axios.create(axiosConf);
