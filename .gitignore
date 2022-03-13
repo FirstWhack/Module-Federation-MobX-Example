@@ -3,3 +3,4 @@ node_modules
 packages/**/dist
 .yarn/cache
 .yarn/install-state.gz
+types/*

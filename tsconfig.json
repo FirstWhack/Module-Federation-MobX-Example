@@ -17,8 +17,8 @@
         "declaration": true,
         "declarationDir": "./types",
         "paths": {
-            "store/Store": ["packages/store/app.ts"],
-            "app2/Users": ["packages/app2/app.tsx"]
+            "store/Store": ["node_modules/@mfexample/store"],
+            "app2/Users": ["node_modules/@mfexample/app2/app.tsx"]
         }
     },
     "sourceMap": true,
