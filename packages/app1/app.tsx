@@ -1,16 +1,17 @@
+// this is only a type
 import { APIStore } from "@mfexample/store";
 import { observer } from "mobx-react";
 import React, { lazy, Suspense } from "react";
 import "./styles.less";
 
 const App2Users = lazy(() => import("app2/Users"));
-const APIStoreContext = import("store/Store");
+const APIStoreRuntime = import("store/Store");
 
 const Numbers = observer(() => {
   // this module is lazy loaded
   const [APIStore, setAPIStore] = React.useState<APIStore | null>(null);
   React.useEffect(() => {
-    APIStoreContext.then(context => setAPIStore(context.APIStoreInstance)), [];
+    APIStoreRuntime.then(module => setAPIStore(module.APIStoreInstance)), [];
   });
 
   return APIStore ? (

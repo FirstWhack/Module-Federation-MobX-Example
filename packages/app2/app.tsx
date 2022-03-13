@@ -1,13 +1,14 @@
+// this is only a type
 import { APIStore } from "@mfexample/store";
 import { observer } from "mobx-react";
 import React from "react";
 
-const APIStoreContext = import("store/Store");
+const APIStoreRuntime = import("store/Store");
 
 export default observer(function App() {
   const [APIStore, setAPIStore] = React.useState<APIStore | null>(null);
   React.useEffect(() => {
-    APIStoreContext.then(context => setAPIStore(context.APIStoreInstance)), [];
+    APIStoreRuntime.then(module => setAPIStore(module.APIStoreInstance)), [];
   });
 
   return APIStore ? (
