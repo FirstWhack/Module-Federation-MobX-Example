@@ -20,6 +20,4 @@ The singleton Store is consumed as a Federated Module.
 ### Store
 This is more of a library than an application. [Using Module Federation Plugin](./packages/app2/webpack.config.js#L51) we can share a singleton that both apps interact with.
 
-In this example the store is based on [TFRP using MobX](https://mobx.js.org/README.html#introduction) - subscriptions are implicit and a React Context (registered through the singleton React instance) is made available as the default export.
-
-The store Class and raw instance are exported (A consumer using non-react MobX bindings (e.g. Vue or Angular) is able to interact with the same store)
+In this example the store is based on [TFRP using MobX](https://mobx.js.org/README.html#introduction) - subscriptions are implicit, the store Class and singleton are exported (the store could be instantiated local to an app to avoid sharing)

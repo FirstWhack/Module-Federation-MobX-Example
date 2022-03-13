@@ -3,6 +3,7 @@
         "./packages/**/*",
     ],
     "compilerOptions": {
+        "baseUrl": "./",
         "strict": true,
         "esModuleInterop": true,
         "lib": [
@@ -14,8 +15,12 @@
         "experimentalDecorators": true,
         "moduleResolution": "node",
         "declaration": true,
-        "declarationDir": "./types"
+        "declarationDir": "./types",
+        "paths": {
+            "store/Store": ["packages/store/app.ts"],
+            "app2/Users": ["packages/app2/app.tsx"]
+        }
     },
     "sourceMap": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
 }

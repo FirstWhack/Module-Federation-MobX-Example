@@ -1,6 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 import { action, configure, makeObservable, onBecomeObserved } from "mobx";
-import { createContext } from "react";
 
 // without configuring enforceActions it would be possible to modify any observable from anywhere
 configure({ enforceActions: "observed" });
@@ -44,8 +43,5 @@ export class APIStore {
   // )
 }
 
-// all references should point to this singleton.
-// If store is accessed outside of useContext (e.g. outside of React) you need to use this instance (unless you want multiple stores)!
+// all references should point to this singleton (unless you want multiple stores).
 export const APIStoreInstance = new APIStore();
-
-export default createContext(APIStoreInstance);
