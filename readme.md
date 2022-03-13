@@ -1,5 +1,8 @@
 # Sharing Observable State Across Micro-FrontEnds
 
+## Worlflows
+![main](https://github.com/FirstWhack/Module-Federation-MobX-Example/actions/workflows/main.yml/badge.svg)
+
 ## Online IDE
 This example runs in [Code Sandbox](https://githubbox.com/FirstWhack/Module-Federation-MobX-Example)!
 
