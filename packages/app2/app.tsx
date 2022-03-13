@@ -8,8 +8,8 @@ const APIStoreRuntime = import("store/Store");
 export default observer(function App() {
   const [APIStore, setAPIStore] = React.useState<APIStore | null>(null);
   React.useEffect(() => {
-    APIStoreRuntime.then(module => setAPIStore(module.APIStoreInstance)), [];
-  });
+    APIStoreRuntime.then(module => setAPIStore(module.APIStoreInstance));
+  }, []);
 
   return APIStore ? (
     <>

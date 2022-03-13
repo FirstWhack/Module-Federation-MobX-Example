@@ -11,8 +11,8 @@ const Numbers = observer(() => {
   // this module is lazy loaded
   const [APIStore, setAPIStore] = React.useState<APIStore | null>(null);
   React.useEffect(() => {
-    APIStoreRuntime.then(module => setAPIStore(module.APIStoreInstance)), [];
-  });
+    APIStoreRuntime.then(module => setAPIStore(module.APIStoreInstance));
+  }, []);
 
   return APIStore ? (
     <>
