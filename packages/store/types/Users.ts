@@ -1,5 +1,5 @@
 interface User {
-  id: 1;
+  id: number;
   name: string;
   username: string;
   email: string;
@@ -14,3 +14,8 @@ interface User {
     };
   };
 }
+
+
+interface DemoUser extends User {
+  flags: number
+};

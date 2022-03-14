@@ -8,28 +8,39 @@ const APIStoreRuntime = import("store/Store");
 export default observer(function App() {
   const [APIStore, setAPIStore] = React.useState<APIStore | null>(null);
   React.useEffect(() => {
-    APIStoreRuntime.then(module => setAPIStore(module.APIStoreInstance));
+    APIStoreRuntime.then((module) => setAPIStore(module.APIStoreInstance));
   }, []);
 
   return APIStore ? (
     <>
       <div className="users__container">
-        <h1>Users App 2 (simple lazy fetch): </h1>
+        <h1>App2 (Modify Something): </h1>
         <pre>This component is a Federated Module</pre>
         <table>
-          {APIStore.users.map(({ name, id, username }) => {
+          <tr>
+            <td>Username</td>
+            <td>ID</td>
+            <td>Flags</td>
+            <td>Action</td>
+          </tr>
+          {APIStore.users.map(({ username, flags, id }) => {
             return (
               <tr>
-                <td>{name}</td>
-                <td>{id}</td>
                 <td>{username}</td>
+                <td style={{ textAlign: "right" }}>{id}</td>
+                <td style={{ textAlign: "right" }}>{flags}</td>
+                <td>
+                  <button onClick={() => APIStore.addFlagToUser(id)}>
+                    Add User Flag
+                  </button>{" "}
+                  <button onClick={() => APIStore.deleteUser(id)}>
+                    Delete User
+                  </button>
+                </td>
               </tr>
             );
           })}
         </table>
-        <button className="users__delete" onClick={APIStore.deleteLastUser}>
-          Delete Last User from App 2
-        </button>
       </div>
     </>
   ) : (

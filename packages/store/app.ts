@@ -1,5 +1,11 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
-import { action, configure, makeObservable, onBecomeObserved } from "mobx";
+import {
+  action,
+  computed,
+  configure,
+  makeObservable,
+  onBecomeObserved,
+} from "mobx";
 
 // without configuring enforceActions it would be possible to modify any observable from anywhere
 configure({ enforceActions: "observed" });
@@ -10,28 +16,42 @@ export class APIStore {
   constructor(
     axiosConf: AxiosRequestConfig = {
       baseURL: "https://jsonplaceholder.typicode.com",
-      auth: undefined
+      auth: undefined,
     }
   ) {
     makeObservable(this, {
-      users: true
+      users: true,
     });
     // setup api that should be in it's own class
     this.api = axios.create(axiosConf);
 
     // setup lazy observables
-    onBecomeObserved(this, "users", this.getUsers);
+    onBecomeObserved(this, "users", this.handleBecomeObserved);
   }
 
-  users: User[] = [];
+  handleBecomeObserved = () => {
+    if (!this.users.length) {
+      this.getUsers();
+    }
+  };
+
+  users: DemoUser[] = [];
   // async / await
   getUsers = action(async () => {
     const { data } = await this.api.get<User[]>("/users");
-    this.users = data;
-    // return data;
+    this.users = (data as DemoUser[]).map((user) => {
+      user.flags = 0;
+      return user;
+    });
   });
-  deleteLastUser = action(() => {
-    this.users.pop();
+  deleteUser = action((userId: User["id"]) => {
+    this.users = this.users.filter((user) => user.id !== userId);
+  });
+  addFlagToUser = action((userId: User["id"]) => {
+    const user = this.users.find((user) => user.id === userId);
+    if (user) {
+      user.flags++;
+    }
   });
 
   // not using async/await is a little weirder
